@@ -38,14 +38,15 @@ export class DpsCharacter {
         let frames = this.charData.phases[this.phase].attributesKeyFrames;
         this.attr = AttributeFrame.interpolate(frames, this.level);
         //console.log(this.attr);
-        //console.log("pot", this.potentialFrame);
+        console.log("潜能", this.potentialFrame.explain());
         this.attr.add(this.potentialFrame);
-        //console.log("add pot", this.attr);
+        console.log("信赖", this.favorFrame.explain());
         this.attr.add(this.favorFrame);
         //console.log("add favor", this.attr);
         if (this.equipData) {
-            this.attr.add(AttributeFrame.from_blackboard(this.equipData.attributeBlackboard));
-            console.log("add equip", this.attr);
+            let equipFrame = AttributeFrame.fromBlackboard(this.equipData.attributeBlackboard);
+            this.attr.add(equipFrame);
+            console.log("模组", equipFrame.explain());
         }
     }
     /*
@@ -82,6 +83,6 @@ export class DpsCharacter {
         return AttributeFrame.interpolate(this.dataset.char.favorKeyFrames, this.favor/2);
     }
     get potentialFrame() {
-        return AttributeFrame.from_potential(this.charData.potentialRanks.slice(0, this.potentialRank+1));
+        return AttributeFrame.fromPotential(this.charData.potentialRanks.slice(0, this.potentialRank+1));
     }
 };
