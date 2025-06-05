@@ -1,5 +1,5 @@
 import { camelCase } from 'change-case';
-import { FramePair, AttrFrame, CharPotential, Dict } from "../arkdps";
+import { FramePair, AttrFrame, CharPotential, Dict, Blackboard } from "../arkdps";
 
 class AttributeFrame implements AttrFrame {
     atk: number = 0;
@@ -29,46 +29,69 @@ class AttributeFrame implements AttrFrame {
         }
     }
 
-    static from_potential(p: CharPotential): AttributeFrame {
+    /** 把切片的所有潜能叠加到AttributeFrame上 */
+    public static from_potential(pot: CharPotential[]): AttributeFrame {
         let ret = new AttributeFrame();
-        switch (p.type) {
-            case "BUFF":
-                let attrKey = camelCase(p.attributeType);
-                if (p.formulaItem == "ADDITION")
-                    ret.add({attrKey: p.value});
-                else {
-                    console.log("Unknown potential formula: ", p.formulaItem);
+        pot.forEach(p => {
+            switch (p.type) {
+                case "BUFF":
+                    if (p.attributeType) {
+                        let attrKey = camelCase(p.attributeType);
+                        if (p.formulaItem == "ADDITION") {
+                            ret.add({ [attrKey]: p.value });
+                        }
+                        else {
+                            console.log("Unknown potential formula: ", p.formulaItem);
+                        }
+                    }
+                    break;
+                case "CUSTOM":
+                    // 天赋效果提高，不处理
+                    break;
+                default:
+                    console.log("Unknown potential type: ", p.type);
+                    break;
                 }
-                break;
-            case "CUSTOM":
-                // 天赋效果提高，不处理
-                break;
-            default:
-                console.log("Unknown potential type: ", p.type);
-                break;
+            }
+        );
+        return ret;
+    }
+
+    /** 把Blackboard处理成属性值。key需要转为camelCase，value必须都是数字 */
+    public static from_blackboard(b: Blackboard): AttributeFrame {
+        var ret = new AttributeFrame();
+        for (const key in b) {
+            let camelKey = camelCase(key);
+            if (camelKey in ret && typeof b[key] == "number") {
+                let k = camelKey as keyof AttrFrame;
+                ret[k] = b[key];
+            } else {
+                console.log(`Skip key ${key}`)
+            }
         }
         return ret;
     }
 
-    static interpolate([first, last]: FramePair, level: number): AttributeFrame {
+    public static interpolate([first, last]: FramePair, level: number): AttributeFrame {
         var rate = (level - first.level) / (last.level - first.level);
         var ret = {} as AttrFrame;
         for (const key in first) {
             const k = key as keyof AttrFrame;   // type annotation
             ret[k] = first[k] * (1-rate) + last[k] * rate;
         }
+        ret.level = level;  // level不参与插值
         return new AttributeFrame(ret);
     }
 
-    add(b: AttrFrame | Dict<number>): AttributeFrame {
+    public add(b: AttrFrame | Dict<number>): AttributeFrame {
         for (const key in b) {
-            const k = key as keyof AttrFrame;   // type annotation
+            const k = key as keyof AttrFrame;
             this[k] += b[k];
         }
         return this;
     }
 
-    as_dict(): Dict<number> {
+    public as_dict(): Dict<number> {
         return this as AttrFrame as Dict<number>;
     }
 }

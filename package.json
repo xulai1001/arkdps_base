@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "ts-node helper/test_dataset.ts"
+    "test": "ts-node test/test_char.ts"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@types/node": "^22.15.21",
+    "change-case": "^5.4.4",
     "json-schema-to-typescript": "^15.0.4",
     "json-to-ts": "^2.1.0",
     "ts-node": "^10.9.2",

@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { AkDataset } from '../src/akdataset';
+import { AkDataset } from '../src/arkdps';
 
 const dir = "/home/ubuntu/arkdps_data_collection/output/";
 const files = fs.readdirSync(dir);
