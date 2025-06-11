@@ -8,4 +8,4 @@ const info = DpsInfo.make(
 );
 console.log(info.explain());
 const char = new DpsCharacter(info);
-//console.log(JSON.stringify(char));
+console.log(JSON.stringify(char));

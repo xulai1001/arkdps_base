@@ -2,7 +2,7 @@ import { camelCase } from 'change-case';
 import { FramePair, AttrFrame, CharPotential, Dict, Blackboard } from "../arkdps";
 import Common from "../common";
 
-class AttributeFrame implements AttrFrame {
+export class AttributeFrame implements AttrFrame {
     atk: number = 0;
     attackSpeed: number = 0;
     baseAttackTime: number = 0;
@@ -31,7 +31,7 @@ class AttributeFrame implements AttrFrame {
     }
 
     /** 把切片的所有潜能叠加到AttributeFrame上 */
-    public static fromPotential(pot: CharPotential[]): AttributeFrame {
+    public static fromPotentialRanks(pot: CharPotential[]): AttributeFrame {
         let ret = new AttributeFrame();
         pot.forEach(p => {
             switch (p.type) {
@@ -109,5 +109,3 @@ class AttributeFrame implements AttrFrame {
         return ret.join(", ");
     }
 }
-
-export default AttributeFrame;

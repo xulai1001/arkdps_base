@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { AkDataset, Dict } from './arkdps';
 
-export const DataRoot = "/home/ubuntu/src/arkdps_data_collection/output/";
+export const DataRoot = "G:/AKDATA_Project/arkdps_data_collection/output/";
 export const AllChars = (() => {
     const files = fs.readdirSync(DataRoot);
     let ret = [] as string[];

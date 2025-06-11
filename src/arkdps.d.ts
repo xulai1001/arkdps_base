@@ -27,8 +27,8 @@ export type CharacterData = {
     rarity: string,
     skills: CharSkill[],
     subProfessionId: string,
-    talents: CharTalent[][],
-    trait: CharTalent[]
+    talents?: CharTalent[][],
+    trait?: CharTalent[]
 };
 
 /** 属性关键帧 */
@@ -87,13 +87,14 @@ export type CharTalent = {
     rangeId?: string,
     requiredPotentialRank: number,
     tokenKey?: string,
-    unlockCondition: UnlockCondition
+    unlockCondition: UnlockCondition,
+    override?: boolean; // 额外字段，如果被模组覆盖，会被程序设置为True
 };
 
 /** 技能、天赋、模组解锁条件 */
 export type UnlockCondition = {
     level: number,
-    phase: string
+    phase: number
 };
 
 export type CustomData = {
@@ -186,38 +187,5 @@ export type SkillSpData = {
     spType: string
 };
 
-export type AkBuff = {
-    /** Buff名 */
-    name: string,
-    /** 描述 */
-    description: string,
-    /** 原始面板 */
-    blackboard: Blackboard,
-    /** 面板到属性词条的映射关系和乘区 */
-    mapping: Dict<BuffMapping?>,
-    /** 持续时间(秒) */
-    duration: number,
-    /** 优先级，同一乘区内越大越先结算 */    
-    priority: number,
-    /** 目标：角色，召唤物或敌人 */
-    target: string,
-    /** 来源信息 */
-    source: BuffSource
-};
 
-export type BuffMapping = {
-    /** 映射到属性的哪个key上 */
-    key: string,
-    /** 乘区 */
-    zone: string,
-    /** 算法 */
-    formula: string
-};
-
-export type BuffSource = {
-    type: string,
-    id: string,
-    name: string,
-    level?: number  
-};
 
