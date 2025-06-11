@@ -1,6 +1,6 @@
 import { camelCase } from 'change-case';
 import { FramePair, AttrFrame, CharPotential, Dict, Blackboard } from "../arkdps";
-import Common from "../common";
+import { Common } from "../common";
 
 export class AttributeFrame implements AttrFrame {
     atk: number = 0;

@@ -2,18 +2,25 @@
   "name": "arkdps_base",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "ts-node test/test_char.ts"
+    "test": "NODE_OPTIONS='--loader ts-node/esm' mocha test/test_char.ts"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/lodash.clonedeep": "^4.5.9",
     "@types/node": "^22.15.21",
     "change-case": "^5.4.4",
     "json-schema-to-typescript": "^15.0.4",
     "json-to-ts": "^2.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "lodash.clonedeep": "^4.5.0",
+    "mocha": "^11.6.0"
   }
 }

@@ -4,8 +4,6 @@ function fmtNumber(x: number, precision?: number): string {
     return x>0 ? `+${r}` : r;
 }
 
-let Common = {
+export const Common = {
     fmtNumber
 };
-
-export default Common;

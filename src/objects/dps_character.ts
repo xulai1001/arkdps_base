@@ -3,6 +3,7 @@ import { AkDataset, CharacterData, Dict, CharTalent, BattleEquipData, SkillData,
 import { DpsBuff } from "./dps_buff";
 import { AttributeFrame}  from "./attribute_frame";
 import { DpsInfo } from "./dps_info";
+import cloneDeep from 'lodash.clonedeep';
 
 /** DPS计算使用的Character类型，完成基础属性计算后的数据 */
 export class DpsCharacter {
@@ -84,7 +85,7 @@ export class DpsCharacter {
             let ret;
             for (var i = trait.length-1; i>=0; i--) {
                 if (this.potentialRank >= trait[i].requiredPotentialRank && this.meetsCondition(trait[i].unlockCondition)) {
-                    ret = {...trait[i]} as CharTalent;
+                    ret = cloneDeep(trait[i]) as CharTalent;
                     break;
                 }
             }
@@ -98,8 +99,10 @@ export class DpsCharacter {
                             ret.override = true;
                             if (bundle.overrideDescripton)
                                 ret.description = bundle.overrideDescripton;
-                            if (bundle.additionalDescription)
+                            if (bundle.additionalDescription) {
+                                if (!ret.description) ret.description = "";
                                 ret.description += bundle.additionalDescription;
+                            }
                             if (bundle.blackboard) {
                                 Object.assign(ret.blackboard, bundle.blackboard);
                                 console.log("模组覆盖特性", ret.blackboard);
@@ -121,7 +124,7 @@ export class DpsCharacter {
             let talent;
             for (var i=candidates.length-1; i>=0; i--) {
                 if (this.potentialRank >= candidates[i].requiredPotentialRank && this.meetsCondition(candidates[i].unlockCondition)) {
-                    talent = {...candidates[i]} as CharTalent;
+                    talent = cloneDeep(candidates[i]) as CharTalent;
                     break;
                 }
             }

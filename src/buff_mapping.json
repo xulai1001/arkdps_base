@@ -1,0 +1,188 @@
+{
+    "atk": {
+        "key": "atk",
+        "zone": "MUL",
+        "description": "攻击力-乘算"
+    },
+    "atk_add": {
+        "key": "atk",
+        "zone": "ADD",
+        "description": "攻击力-加算"
+    },
+    "atk_scale": {
+        "key": "atk_scale",
+        "zone": "FINAL_MUL",
+        "description": "攻击倍率-最终乘算"
+    },
+    "attackSpeed": {
+        "key": "attackSpeed",
+        "zone": "ADD",
+        "description": "攻速-加算"
+    },
+    "baseAttackTime": {
+        "key": "baseAttackTime",
+        "zone": "ADD",
+        "description": "攻击间隔-加算"
+    },
+    "baseAttackTime_mul": {
+        "key": "baseAttackTime",
+        "zone": "MUL",
+        "description": "攻击间隔-乘算"
+    },
+    "baseAttackTime_sub": {
+        "key": "baseAttackTime",
+        "zone": "ADD",
+        "tag": [
+            "minus"
+        ],
+        "description": "攻击间隔-减算"
+    },
+    "baseAttackTime_mulsub": {
+        "key": "baseAttackTime",
+        "zone": "MUL",
+        "tag": [
+            "minus"
+        ],
+        "description": "攻击间隔-减乘"
+    },
+    "baseForceLevel": {
+        "key": "baseForceLevel",
+        "zone": "ADD",
+        "description": "力度-加算"
+    },
+    "blockCnt": {
+        "key": "blockCnt",
+        "zone": "ADD",
+        "description": "阻挡数-加算"
+    },
+    "cost": {
+        "key": "cost",
+        "zone": "ADD",
+        "description": "费用-加算"
+    },
+    "damage_scale": {
+        "key": "damage_scale",
+        "zone": "FINAL_MUL",
+        "description": "伤害倍率-最终乘算"
+    },
+    "def": {
+        "key": "def",
+        "zone": "MUL",
+        "description": "防御力-乘算"
+    },
+    "def_penetrate": {
+        "key": "def",
+        "zone": "FINAL_MUL",
+        "description": "物穿-最终乘算"
+    },
+    "def_penetrate_fixed": {
+        "key": "def",
+        "zone": "FINAL_ADD",
+        "description": "物穿-最终加算"
+    },
+    "def_scale": {
+        "key": "def_scale",
+        "zone": "FINAL_MUL",
+        "description": "防御倍率-最终乘算"
+    },
+    "heal_scale": {
+        "key": "heal_scale",
+        "zone": "FINAL_MUL",
+        "description": "治疗倍率-最终乘算"
+    },
+    "hpRecoveryPerSec": {
+        "key": "hpRecoveryPerSec",
+        "zone": "ADD",
+        "description": "缓回-加算"
+    },
+    "hp_ratio": {
+        "key": "hp_ratio_sec",
+        "zone": "APPEND",
+        "description": "百分比缓回或流失生命"
+    },
+    "hp_ratio_attack": {
+        "key": "hp_ratio_attack",
+        "zone": "APPEND",
+        "description": "攻击回复或流失生命"
+    },
+    "magicResistance": {
+        "key": "magicResistance",
+        "zone": "ADD",
+        "description": "法抗-加算"
+    },
+    "magicResistance_mul": {
+        "key": "magicResistance",
+        "zone": "MUL",
+        "description": "法抗-乘算"
+    },
+    "magic_resist_penetrate_fixed": {
+        "key": "magicResistance",
+        "zone": "FINAL_ADD",
+        "description": "法穿-最终加算"
+    },
+    "massLevel": {
+        "key": "massLevel",
+        "zone": "ADD",
+        "description": "重量-加算"
+    },
+    "maxDeckStackCnt": {
+        "key": "maxDeckStackCnt",
+        "zone": "ADD",
+        "description": "Token总数-加算"
+    },
+    "maxDeployCount": {
+        "key": "maxDeployCount",
+        "zone": "ADD",
+        "description": "Token部署数-加算"
+    },
+    "maxHp": {
+        "key": "maxHp",
+        "zone": "MUL",
+        "description": "生命值-乘算"
+    },
+    "maxHp_add": {
+        "key": "maxHp",
+        "zone": "ADD",
+        "description": "生命值-加算"
+    },
+    "maxTarget": {
+        "key": "maxTarget",
+        "zone": "SET",
+        "group": "maxTarget",
+        "description": "目标数-设置"
+    },
+    "prob": {
+        "key": "prob",
+        "zone": "SET",
+        "group": "prob",
+        "description": "概率-设置"
+    },
+    "respawnTime": {
+        "key": "respawnTime",
+        "zone": "ADD",
+        "description": "再部署-加算"
+    },
+    "spRecoveryPerSec": {
+        "key": "spRecoveryPerSec",
+        "zone": "ADD",
+        "group": "spRecoveryPerSec",
+        "description": "技力恢复-加算"
+    },
+    "spRecoveryPerInterval": {
+        "key": "spInterval",
+        "zone": "APPEND",
+        "group": "spInterval",
+        "description": "技力恢复-间隔"
+    },
+    "tauntLevel": {
+        "key": "tauntLevel",
+        "zone": "ADD",
+        "description": "嘲讽等级-加算"
+    },
+    "times": {
+        "key": "times",
+        "zone": "SET",
+        "group": "times",
+        "description": "连击数-设置"
+    }
+}
